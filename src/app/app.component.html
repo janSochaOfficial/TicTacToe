@@ -1,0 +1,20 @@
+<table id="board" >
+  <tr *ngFor="let item of createRange(3); index as i;">
+    <td
+    *ngFor="let item of createRange(3); index as j;"
+    (click)="tileClick($event)"
+    id="{{i}}{{j}}"
+    [ngClass]="{'tile': true, 'disabled': isDisabled(i, j)}"
+    >
+    <span [ngClass]="getTileContent(i, j)">
+
+    </span>
+    </td>
+  </tr>
+</table>
+<div [ngClass]="{'hidden': playing}" id="winScreen">
+  <div class="floating">
+    <h1>{{(gameState == "draw")? "Draw!" : "You Lost!"}}</h1>
+    <button (click)="restart()">Restart!</button>
+  </div>
+</div>
